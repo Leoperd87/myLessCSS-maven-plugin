@@ -15,7 +15,7 @@
     <name>myLessCSS-maven-plugin Maven Plugin</name>
     <description>Maven plugin for LessCSS.</description>
 
-    <!--<url>https://github.com/skwakman/nodejs-maven-plugin</url>-->
+    <url>http://dej.in.ua/mylesscss-maven-plugin/</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
