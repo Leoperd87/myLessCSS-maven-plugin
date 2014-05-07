@@ -5,6 +5,7 @@
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
+        <relativePath />
     </parent>
 
     <groupId>ua.in.dej</groupId>
@@ -15,13 +16,13 @@
     <name>myLessCSS-maven-plugin Maven Plugin parent</name>
     <description>Parent POM of myLessCSS-maven-plugin</description>
 
-    <url>http://dej.in.ua</url>
+    <url>http://dej.in.ua/mylesscss-maven-plugin/</url>
 
     <scm>
         <connection>scm:git:git@git.dejin.pp.ua:fima/mylesscss-maven-plugin.git</connection>
-        <url>scm:git:git@git.dejin.pp.ua:fima/mylesscss-maven-plugin.git</url>
         <developerConnection>scm:git:git@git.dejin.pp.ua:fima/mylesscss-maven-plugin.git</developerConnection>
-        <tag>HEAD</tag>
+        <url>scm:git:git@git.dejin.pp.ua:fima/mylesscss-maven-plugin.git</url>
+        <!--<tag>myLessCss-maven-plugin-${project.version}</tag>-->
     </scm>
 
     <licenses>
@@ -34,9 +35,10 @@
 
     <developers>
         <developer>
-            <id>leoperd87</id>
-            <name>Efim Vl. Dejin</name>
+            <id>owner</id>
+            <name>Efim Dejin</name>
             <email>efim@dejin.pp.ua</email>
+            <timezone>UTC+4</timezone>
         </developer>
     </developers>
 
@@ -63,7 +65,13 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.4</version>
+                        <!--<version>1.4</version>-->
+
+                        <!-- did I need it? -->
+                        <configuration>
+                            <passphrase>${gpg.passphrase}</passphrase>
+                        </configuration>
+
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
