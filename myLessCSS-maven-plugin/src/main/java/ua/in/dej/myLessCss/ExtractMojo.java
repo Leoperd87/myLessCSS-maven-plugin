@@ -43,6 +43,27 @@ public class ExtractMojo extends AbstractMojo {
     private myFileRecord[] fileList;
 
     /**
+     * Clean after build
+     *
+     * @parameter default-value=true
+     */
+    private Boolean cleanAfter;
+
+    /**
+     * Custome nodejs binary
+     *
+     * @parameter default-value=null
+     */
+    private String nodejsBinaryPath;
+
+    /**
+     * Custome lesscss binary
+     *
+     * @parameter default-value=null
+     */
+    private String lesscssBinaryPath;
+
+    /**
      * @component
      */
     protected ArchiverManager archiverManager;
@@ -66,12 +87,25 @@ public class ExtractMojo extends AbstractMojo {
             File targetDir = new File(buildDirectory + separator + "less");
 
             prepareTargetDirectory(targetDir);
-            extractArtifact(findArtifact(pluginDescriptor.getArtifacts(), "nodejs-maven-binaries"), targetDir);
-            extractArtifact(findArtifact(pluginDescriptor.getArtifacts(), "lesscss-maven-sources"), targetDir);
+
+            String nodeParam = targetDir + separator + "node";
+            String lessParam = targetDir + separator + "less.js" + separator + "bin" + separator + "lessc";
+
+            if (nodejsBinaryPath.equals("null")) {
+                extractArtifact(findArtifact(pluginDescriptor.getArtifacts(), "nodejs-maven-binaries"), targetDir);
+            } else {
+                nodeParam = nodejsBinaryPath;
+            }
+
+            if (lesscssBinaryPath.equals("null")) {
+                extractArtifact(findArtifact(pluginDescriptor.getArtifacts(), "lesscss-maven-sources"), targetDir);
+            } else {
+                lessParam = lesscssBinaryPath;
+            }
 
             String argv[] = new String[]{
-                    targetDir + separator + "node",
-                    targetDir + separator + "less.js" + separator + "bin" + separator + "lessc"
+                    nodeParam,
+                    lessParam
             };
 
             if (options != null && options.length > 0) {
@@ -92,6 +126,13 @@ public class ExtractMojo extends AbstractMojo {
                 Process p = null;
                 BufferedReader is;
                 String line;
+
+
+                String runNow = "Run: ";
+                for (String option : thisBuildArgs) {
+                    runNow += option + " ";
+                }
+                System.out.println(runNow);
 
                 try {
                     p = r.exec(thisBuildArgs);
@@ -130,6 +171,14 @@ public class ExtractMojo extends AbstractMojo {
                 } catch (InterruptedException e) {
                     System.err.println(e);  // "Can'tHappen"
                     return;
+                }
+            }
+
+            if (cleanAfter) {
+                try {
+                    FileUtils.deleteDirectory(targetDir);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         } else {
