@@ -276,18 +276,18 @@
     </profiles>
 
 <!--todo only for install-->
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-public</id>
-            <name>SonaType public snapshots and releases repository</name>
-            <url>https://oss.sonatype.org/content/groups/public</url>
-            <releases>
-                <!--set to true if you wish to fetch releases from this repo too.-->
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>sonatype-nexus-public</id>-->
+            <!--<name>SonaType public snapshots and releases repository</name>-->
+            <!--<url>https://oss.sonatype.org/content/groups/public</url>-->
+            <!--<releases>-->
+                <!--&lt;!&ndash;set to true if you wish to fetch releases from this repo too.&ndash;&gt;-->
+                <!--<enabled>false</enabled>-->
+            <!--</releases>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 </project>
