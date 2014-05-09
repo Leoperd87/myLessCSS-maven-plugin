@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -287,19 +287,19 @@
         </profile>
     </profiles>
 
-<!--todo only for install-->
+    <!--todo only for install-->
     <!--<repositories>-->
-        <!--<repository>-->
-            <!--<id>sonatype-nexus-public</id>-->
-            <!--<name>SonaType public snapshots and releases repository</name>-->
-            <!--<url>https://oss.sonatype.org/content/groups/public</url>-->
-            <!--<releases>-->
-                <!--&lt;!&ndash;set to true if you wish to fetch releases from this repo too.&ndash;&gt;-->
-                <!--<enabled>false</enabled>-->
-            <!--</releases>-->
-            <!--<snapshots>-->
-                <!--<enabled>true</enabled>-->
-            <!--</snapshots>-->
-        <!--</repository>-->
+    <!--<repository>-->
+    <!--<id>sonatype-nexus-public</id>-->
+    <!--<name>SonaType public snapshots and releases repository</name>-->
+    <!--<url>https://oss.sonatype.org/content/groups/public</url>-->
+    <!--<releases>-->
+    <!--&lt;!&ndash;set to true if you wish to fetch releases from this repo too.&ndash;&gt;-->
+    <!--<enabled>false</enabled>-->
+    <!--</releases>-->
+    <!--<snapshots>-->
+    <!--<enabled>true</enabled>-->
+    <!--</snapshots>-->
+    <!--</repository>-->
     <!--</repositories>-->
 </project>
