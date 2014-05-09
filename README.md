@@ -6,6 +6,7 @@ LessCSS. Requires Maven 3.x or higher.
 ### Usage
 The following POM plugin configuration
 
+```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     ...
     <build>
@@ -82,6 +83,7 @@ The following POM plugin configuration
         </pluginRepository>
     </pluginRepositories>
 </project>
+```
 
 ### Supported platforms
 
