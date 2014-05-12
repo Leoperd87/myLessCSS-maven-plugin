@@ -90,11 +90,8 @@ public class ExtractMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException {
         String separator = System.getProperty("file.separator");
 
-        if (printLessHelp) {
-            // todo
-        }
 
-        if (fileList != null && fileList.length > 0) {
+        if (fileList != null && fileList.length > 0 || printLessHelp) {
             File targetDir = new File(buildDirectory + separator + "less");
 
             prepareTargetDirectory(targetDir);
@@ -125,32 +122,17 @@ public class ExtractMojo extends AbstractMojo {
                 }
             }
 
-            for (myFileRecord fr : fileList) {
-                System.out.print(fr.getSrcPath() + " > " + fr.getDstPath() + "\n");
+            if (printLessHelp) {
 
                 String[] thisBuildArgs = argv.clone();
 
-                String[] customBuildOptions = fr.getOptions();
-                if (customBuildOptions != null && customBuildOptions.length > 0) {
-                    for (String customBuildOption : customBuildOptions) {
-                        thisBuildArgs = this.arrRecordToArray(thisBuildArgs, customBuildOption);
-                    }
-                }
-
-                thisBuildArgs = this.arrRecordToArray(thisBuildArgs, buildDirectory + separator + fr.getSrcPath());
-                thisBuildArgs = this.arrRecordToArray(thisBuildArgs, buildDirectory + separator + fr.getDstPath());
+                thisBuildArgs = this.arrRecordToArray(thisBuildArgs, "-h");
 
                 Runtime r = Runtime.getRuntime();
                 Process p = null;
                 BufferedReader is;
                 String line;
 
-
-                String runNow = "Run: ";
-                for (String option : thisBuildArgs) {
-                    runNow += option + " ";
-                }
-                System.out.println(runNow);
 
                 try {
                     p = r.exec(thisBuildArgs);
@@ -166,29 +148,74 @@ public class ExtractMojo extends AbstractMojo {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
 
-                is = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+            if (fileList != null && fileList.length > 0) {
+                for (myFileRecord fr : fileList) {
+                    System.out.print(fr.getSrcPath() + " > " + fr.getDstPath() + "\n");
 
-                Boolean hasError = false;
+                    String[] thisBuildArgs = argv.clone();
 
-                try {
-                    while ((line = is.readLine()) != null) {
-                        System.err.println(line);
-                        hasError = true;
+                    String[] customBuildOptions = fr.getOptions();
+                    if (customBuildOptions != null && customBuildOptions.length > 0) {
+                        for (String customBuildOption : customBuildOptions) {
+                            thisBuildArgs = this.arrRecordToArray(thisBuildArgs, customBuildOption);
+                        }
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
-                if (hasError) {
-                    throw new NullPointerException("demo"); //todo
-                }
+                    thisBuildArgs = this.arrRecordToArray(thisBuildArgs, buildDirectory + separator + fr.getSrcPath());
+                    thisBuildArgs = this.arrRecordToArray(thisBuildArgs, buildDirectory + separator + fr.getDstPath());
 
-                try {
-                    p.waitFor();  // wait for process to complete
-                } catch (InterruptedException e) {
-                    System.err.println(e);  // "Can'tHappen"
-                    return;
+                    Runtime r = Runtime.getRuntime();
+                    Process p = null;
+                    BufferedReader is;
+                    String line;
+
+
+                    String runNow = "Run: ";
+                    for (String option : thisBuildArgs) {
+                        runNow += option + " ";
+                    }
+                    System.out.println(runNow);
+
+                    try {
+                        p = r.exec(thisBuildArgs);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    is = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+                    try {
+                        while ((line = is.readLine()) != null)
+                            System.out.println(line);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    is = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+
+                    Boolean hasError = false;
+
+                    try {
+                        while ((line = is.readLine()) != null) {
+                            System.err.println(line);
+                            hasError = true;
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    if (hasError) {
+                        throw new NullPointerException("demo"); //todo
+                    }
+
+                    try {
+                        p.waitFor();  // wait for process to complete
+                    } catch (InterruptedException e) {
+                        System.err.println(e);  // "Can'tHappen"
+                        return;
+                    }
                 }
             }
 
