@@ -6,44 +6,84 @@ LessCSS. Requires Maven 3.x or higher.
 ### Usage
 The following POM plugin configuration
 
-    <plugins>
-        <plugin>
-            <groupId>ua.in.dej</groupId>
-            <artifactId>myLessCss</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>extract</goal>
-                    </goals>
-                </execution>
-            </executions>
-            <configuration>
-                <options>
-                    <!--<option>-->
-                        <!---x-->
-                    <!--</option>-->
-                </options>
+```
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    ...
+    <build>
+        ...
+        <plugins>
+            <plugin>
+                <groupId>ua.in.dej</groupId>
+                <artifactId>myLessCss</artifactId>
+                <version>1.0-less1.7.0-RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>extract</goal>
+                        </goals>
+                        <!-- Optional. Default value: package. -->
+                        <phase>prepare-package</phase>
+                    </execution>
+                </executions>
+                <configuration>
 
-                <fileList>
-                    <myFileRecord>
-                        <srcPath>test\styles\main.less</srcPath>
-                        <dstPath>test\styles\main.css</dstPath>
-                    </myFileRecord>
-                    <myFileRecord>
-                        <srcPath>test\styles\onemore.less</srcPath>
-                        <dstPath>test\styles\onemore.gss</dstPath>
-                    </myFileRecord>
-                    <myFileRecord>
-                        <srcPath>test\styles\error.less</srcPath>
-                        <dstPath>test\styles\error.css</dstPath>
-                    </myFileRecord>
-                </fileList>
+                    <!-- Optional. LessJS compiler arguments. -->
+                    <options>
+                        <option>
+                            -x
+                        </option>
+                    </options>
 
+                    <!-- Optional. Default value: ${project.build.directory} -->
+                    <buildDirectory>
+                        ${project.basedir}/target/test/styles
+                    </buildDirectory>
 
-            </configuration>
-        </plugin>
-    </plugins>
+                    <!-- Optional. Remove NodeJS binary and LessJS sources on build complete. Default value: true -->
+                    <cleanAfter>
+                        false
+                    </cleanAfter>
+
+                    <!-- Optional. LessCSS executable script path. -->
+                    <lesscssBinaryPath>
+                        /tmp/lessjs/bin/lessc
+                    </lesscssBinaryPath>
+
+                    <!-- Optional. NodeJS executable binary path. -->
+                    <nodejsBinaryPath>
+                        /tmp/node
+                    </nodejsBinaryPath>
+
+                    <!-- Required. List of source less files and destination files. -->
+                    <fileList>
+                        <myFileRecord>
+                            <srcPath>main.less</srcPath>
+                            <dstPath>main.css</dstPath>
+                        </myFileRecord>
+                        <myFileRecord>
+                            <srcPath>onemore.less</srcPath>
+                            <dstPath>onemore.gss</dstPath>
+                        </myFileRecord>
+                        <myFileRecord>
+                            <srcPath>error.less</srcPath>
+                            <dstPath>error.css</dstPath>
+                        </myFileRecord>
+                    </fileList>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    ...
+    <pluginRepositories>
+        ...
+        <pluginRepository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/repositories/releases/</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>
+```
 
 ### Supported platforms
 
