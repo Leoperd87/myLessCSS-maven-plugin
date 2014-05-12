@@ -50,6 +50,13 @@ public class ExtractMojo extends AbstractMojo {
     private Boolean cleanAfter;
 
     /**
+     * Print less help
+     *
+     * @parameter default-value=false
+     */
+    private Boolean printLessHelp;
+
+    /**
      * Custome nodejs binary
      *
      * @parameter default-value=null
@@ -82,6 +89,10 @@ public class ExtractMojo extends AbstractMojo {
      */
     public void execute() throws MojoExecutionException {
         String separator = System.getProperty("file.separator");
+
+        if (printLessHelp) {
+            // todo
+        }
 
         if (fileList != null && fileList.length > 0) {
             File targetDir = new File(buildDirectory + separator + "less");
@@ -118,6 +129,13 @@ public class ExtractMojo extends AbstractMojo {
                 System.out.print(fr.getSrcPath() + " > " + fr.getDstPath() + "\n");
 
                 String[] thisBuildArgs = argv.clone();
+
+                String[] customBuildOptions = fr.getOptions();
+                if (customBuildOptions != null && customBuildOptions.length > 0) {
+                    for (String customBuildOption : customBuildOptions) {
+                        thisBuildArgs = this.arrRecordToArray(thisBuildArgs, customBuildOption);
+                    }
+                }
 
                 thisBuildArgs = this.arrRecordToArray(thisBuildArgs, buildDirectory + separator + fr.getSrcPath());
                 thisBuildArgs = this.arrRecordToArray(thisBuildArgs, buildDirectory + separator + fr.getDstPath());

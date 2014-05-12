@@ -6,6 +6,7 @@ package ua.in.dej.myLessCss;
 public class myFileRecord {
     private String srcPath;
     private String dstPath;
+    private String[] options;
 
     public String getSrcPath() {
         return srcPath;
@@ -21,5 +22,13 @@ public class myFileRecord {
 
     public void setDstPath(String dstPath) {
         this.dstPath = dstPath;
+    }
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public void setOptions(String[] options) {
+        this.options = options;
     }
 }
