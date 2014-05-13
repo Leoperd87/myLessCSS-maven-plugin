@@ -44,6 +44,11 @@ The following POM plugin configuration
                         false
                     </cleanAfter>
 
+                    <!-- Optional. Print LessCss help. Default value: false -->
+                    <printLessHelp>
+                        false
+                    </printLessHelp>
+
                     <!-- Optional. LessCSS executable script path. -->
                     <lesscssBinaryPath>
                         /tmp/lessjs/bin/lessc
@@ -54,10 +59,18 @@ The following POM plugin configuration
                         /tmp/node
                     </nodejsBinaryPath>
 
-                    <!-- Required. List of source less files and destination files. -->
+                    <!-- Optional. List of source less files, destination files and custom options. -->
                     <fileList>
                         <myFileRecord>
+                            <!-- Optional. Add some options only for this build. -->
+                            <options>
+                                <option>
+                                    --source-map=${project.build.directory}/${project.build.finalName}/styles/main.map
+                                </option>
+                            </options>
+                            <!-- Required. Source file name. -->
                             <srcPath>main.less</srcPath>
+                            <!-- Required. Destination file name. -->
                             <dstPath>main.css</dstPath>
                         </myFileRecord>
                         <myFileRecord>
