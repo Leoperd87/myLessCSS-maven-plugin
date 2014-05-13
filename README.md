@@ -87,14 +87,6 @@ The following POM plugin configuration
             </plugin>
         </plugins>
     </build>
-    ...
-    <pluginRepositories>
-        ...
-        <pluginRepository>
-            <id>sonatype</id>
-            <url>https://oss.sonatype.org/content/repositories/releases/</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
 ```
 
