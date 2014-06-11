@@ -57,7 +57,7 @@
         <dependency>
             <groupId>ua.in.dej</groupId>
             <artifactId>lesscss-maven-sources</artifactId>
-            <version>1.12-RELEASE</version>
+            <version>1.13</version>
             <classifier>1.7.1</classifier>
             <type>zip</type>
         </dependency>
