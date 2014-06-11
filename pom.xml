@@ -10,7 +10,7 @@
 
     <groupId>ua.in.dej</groupId>
     <artifactId>myLessCss-parent</artifactId>
-    <version>1.1-less1.7.1-SNAPSHOT</version>
+    <version>1.1-less1.7.1-RELEASE</version>
     <packaging>pom</packaging>
 
     <name>myLessCSS-maven-plugin Maven Plugin parent</name>
