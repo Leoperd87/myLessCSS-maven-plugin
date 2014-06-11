@@ -15,7 +15,7 @@ The following POM plugin configuration
             <plugin>
                 <groupId>ua.in.dej</groupId>
                 <artifactId>myLessCss</artifactId>
-                <version>1.1-less1.7.1-RELEASE</version>
+                <version>1.1-less1.7.0-RELEASE</version>
                 <executions>
                     <execution>
                         <goals>
@@ -87,14 +87,6 @@ The following POM plugin configuration
             </plugin>
         </plugins>
     </build>
-    ...
-    <pluginRepositories>
-        ...
-        <pluginRepository>
-            <id>sonatype</id>
-            <url>https://oss.sonatype.org/content/repositories/releases/</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
 ```
 
