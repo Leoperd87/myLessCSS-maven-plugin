@@ -15,7 +15,7 @@ The following POM plugin configuration
             <plugin>
                 <groupId>ua.in.dej</groupId>
                 <artifactId>myLessCss</artifactId>
-                <version>1.2-less1.7.4-RELEASE</version>
+                <version>1.2-less1.7.5</version>
                 <executions>
                     <execution>
                         <goals>
