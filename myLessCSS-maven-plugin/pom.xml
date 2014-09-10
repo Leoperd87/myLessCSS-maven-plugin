@@ -4,11 +4,11 @@
     <parent>
         <groupId>ua.in.dej</groupId>
         <artifactId>myLessCss-parent</artifactId>
-        <version>1.2-less1.7.4-SNAPSHOT</version>
+        <version>1.2-less1.7.5</version>
     </parent>
 
     <artifactId>myLessCss</artifactId>
-    <version>1.2-less1.7.4-SNAPSHOT</version>
+    <version>1.2-less1.7.5</version>
     <packaging>maven-plugin</packaging>
 
     <name>myLessCSS-maven-plugin Maven Plugin</name>
@@ -57,8 +57,8 @@
         <dependency>
             <groupId>ua.in.dej</groupId>
             <artifactId>lesscss-maven-sources</artifactId>
-            <version>1.16</version>
-            <classifier>1.7.4</classifier>
+            <version>1.17</version>
+            <classifier>1.7.5</classifier>
             <type>zip</type>
         </dependency>
 
