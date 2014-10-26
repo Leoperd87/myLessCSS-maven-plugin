@@ -19,9 +19,9 @@
     <url>http://dej.in.ua/mylesscss-maven-plugin/</url>
 
     <scm>
-        <connection>scm:git:git@git.dejin.pp.ua:fima/mylesscss-maven-plugin.git</connection>
-        <developerConnection>scm:git:git@git.dejin.pp.ua:fima/mylesscss-maven-plugin.git</developerConnection>
-        <url>scm:git:git@git.dejin.pp.ua:fima/mylesscss-maven-plugin.git</url>
+        <connection>scm:git:git@git.dej.in.ua:fima/mylesscss-maven-plugin.git</connection>
+        <developerConnection>scm:git:git@git.dej.in.ua:fima/mylesscss-maven-plugin.git</developerConnection>
+        <url>scm:git:git@git.dej.in.ua:fima/mylesscss-maven-plugin.git</url>
         <!--<tag>myLessCss-maven-plugin-${project.version}</tag>-->
     </scm>
 
@@ -37,7 +37,7 @@
         <developer>
             <id>owner</id>
             <name>Efim Dejin</name>
-            <email>efim@dejin.pp.ua</email>
+            <email>efim@dej.in.ua</email>
             <timezone>UTC+4</timezone>
         </developer>
     </developers>
