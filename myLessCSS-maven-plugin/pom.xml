@@ -4,11 +4,11 @@
     <parent>
         <groupId>ua.in.dej</groupId>
         <artifactId>myLessCss-parent</artifactId>
-        <version>1.2-less2.1.2</version>
+        <version>1.2-less3.1.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>myLessCss</artifactId>
-    <version>1.2-less2.1.2</version>
+    <version>1.2-less3.1.2-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
     <name>myLessCSS-maven-plugin Maven Plugin</name>
